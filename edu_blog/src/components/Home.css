@@ -1,0 +1,112 @@
+/* src/pages/Home.css */
+
+/* General Styles */
+.home-main {
+    margin: 0 auto; /* Centra el contenido */
+    padding: 0;
+    font-family: 'Open Sans', sans-serif;
+    color: #333;
+    width: 100%; 
+    max-width: none; /* Permite que el ancho se expanda al 100% */
+    box-sizing: border-box; /* Incluye padding en el cálculo del ancho */
+}
+  
+.home-banner {
+    background-image: url('../assets/images/banner.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 30rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    width: 100%; 
+    box-sizing: border-box; /* Incluye padding en el cálculo del ancho */
+}
+  
+.banner-content h1 {
+    font-size: 2.5em;
+    margin: 0;
+    line-height: 1.2;
+}
+  
+.banner-content p {
+    font-size: 1.2em;
+    margin-top: 10px;
+}
+  
+/* Introduction Section Styles */
+.home-intro {
+    max-width: 100%;
+    margin: 0; /* Centra el contenido con márgenes automáticos */
+    padding: 2rem;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    box-sizing: border-box; /* Incluye padding en el cálculo del ancho */
+}
+  
+.home-intro h2 {
+    font-size: 2em;
+    margin-top: 0;
+    color: #333;
+}
+  
+.home-intro p {
+    font-size: 1.2em;
+    line-height: 1.8;
+    color: #666;
+}
+
+
+.galery-title {
+  font-size: 3em;
+  color: #666;
+  text-align: center; /* Alinea el texto al centro */
+  width: 100%; /* Asegura que ocupe todo el ancho del contenedor */
+  margin: 0 auto; /* Garantiza que se centre si tiene márgenes */
+}
+
+
+/* Carrusel Styles */
+.home-carousel {
+    width: 100%;
+    max-width: auto; /* Ajusta el ancho máximo según tus necesidades */
+    margin: 0 auto; /* Centra el carrusel horizontalmente */
+    padding: 2rem 0; /* Espacio arriba y abajo del carrusel */
+  }
+
+  
+  .carousel-image {
+    width: 100%;
+    height: auto;
+    display: block; /* Asegura que no haya espacio debajo de la imagen */
+    object-fit: cover; /* Ajusta la imagen para cubrir el contenedor */
+    height: 16rem; /* Ajusta la altura máxima según tus necesidades */
+  }
+  
+  
+  .slick-slide {
+    display: flex; /* Usa flexbox para centrar el contenido en cada diapositiva */
+    justify-content: center; /* Centra horizontalmente el contenido */
+    align-items: center; /* Centra verticalmente el contenido */
+  }
+  
+  .slick-dots {
+    bottom: 10px; /* Ajusta la posición de los puntos de navegación */
+  }
+  
+  .slick-prev, .slick-next {
+    z-index: 1; /* Asegura que los botones de navegación estén encima del contenido */
+  }
+  
+  .slick-prev {
+    left: 10px; /* Ajusta la posición del botón de navegación anterior */
+  }
+  
+  .slick-next {
+    right: 10px; /* Ajusta la posición del botón de navegación siguiente */
+  }
+  
