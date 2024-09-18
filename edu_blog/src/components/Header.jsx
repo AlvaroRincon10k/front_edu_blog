@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './Header.css'; 
+import { FaSignInAlt, FaUserPlus, FaSignOutAlt, FaUser } from 'react-icons/fa'; // Iconos
 
 function Header() {
-  // Estado para simular el estado de autenticación
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   useEffect(() => {
-    // Simulamos la autenticación verificando un valor en el localStorage
     const user = localStorage.getItem('user');
     if (user) {
       setIsAuthenticated(true);
@@ -30,13 +29,13 @@ function Header() {
         <ul className="auth-links">
           {isAuthenticated ? (
             <>
-              <li><span>Bienvenido, Usuario</span></li>
-              <li><button onClick={handleLogout}>Cerrar sesión</button></li>
+              <li><FaUser className="auth-icon" /><span>Bienvenido, Usuario</span></li>
+              <li><FaSignOutAlt className="auth-icon" onClick={handleLogout} /></li>
             </>
           ) : (
             <>
-              <li><Link to="/login">Ingresa</Link></li>
-              <li><Link to="/register">Regístrate</Link></li>
+              <li><Link to="/login"><FaSignInAlt className="auth-icon" /></Link></li>
+              <li><Link to="/register"><FaUserPlus className="auth-icon" /></Link></li>
             </>
           )}
         </ul>

@@ -1,0 +1,222 @@
+/* General Styles */
+body {
+    font-family: 'Open Sans', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    width: 100vw;
+    margin: 20px auto;
+    padding: 0;
+    background: #fff;
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Softer shadow */
+}
+
+/* Heading Styles */
+h1, .events-title {
+    font-size: 2.5em;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    color: #333;
+    font-weight: 600; /* Bolder heading */
+}
+
+h2, .event-title {
+    font-size: 1.8em;
+    margin-top: 2rem;
+    color: #444;
+    font-weight: 500;
+}
+
+h3 {
+    font-size: 1.6em;
+    margin-top: 20px;
+    color: #555;
+}
+
+/* Event List Styles */
+.events-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.event-item {
+    border-bottom: 1px solid #ddd;
+    padding: 20px 0;
+    margin-bottom: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.event-item:hover {
+    background-color: #f9f9f9; /* Subtle hover effect */
+}
+
+.event-item:last-child {
+    border-bottom: none;
+}
+
+/* Image Styles */
+.event-image {
+    max-width: 120px; /* Slightly larger images */
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+}
+
+/* Description Styles */
+.event-description {
+    margin: 0 0 20px;
+    line-height: 1.8;
+    color: #555;
+    font-size: 1.1em;
+}
+
+/* Date and Location Styles */
+.event-date, .event-location {
+    font-size: 1.1em;
+    margin-top: 5px;
+}
+
+.event-date {
+    color: #007bff;
+    font-weight: 600;
+}
+
+.event-location {
+    color: #888;
+    font-style: italic;
+}
+
+/* Loading and Error Styles */
+.loading {
+    font-size: 1.3em;
+    color: #007bff;
+    font-weight: 500;
+}
+
+.error {
+    font-size: 1.3em;
+    color: #dc3545;
+    font-weight: 500;
+}
+
+/* Button Styles */
+button, a.button {
+    display: inline-block;
+    padding: 10px 20px;
+    color: #fff;
+    background-color: #007bff;
+    text-decoration: none;
+    border-radius: 5px;
+    border: none;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+button:hover, a.button:hover {
+    background-color: #0056b3;
+}
+
+button:focus, a.button:focus {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.5);
+}
+
+/* Event Action Buttons */
+.event-actions button {
+    margin-right: 10px;
+    padding: 8px 16px;
+}
+
+.event-actions button:last-child {
+    margin-right: 0;
+}
+
+/* Form Styles */
+.edit-form {
+    margin-top: 30px;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+.edit-form h2 {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+}
+
+.edit-form form {
+    display: flex;
+    flex-direction: column;
+}
+
+.edit-form label {
+    font-weight: 500;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.edit-form input, 
+.edit-form textarea {
+    padding: 10px;
+    font-size: 1em;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    transition: border-color 0.3s ease;
+}
+
+.edit-form input:focus, 
+.edit-form textarea:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+.edit-form button {
+    align-self: flex-start;
+    padding: 10px 20px;
+    background-color: #28a745;
+    font-weight: 600;
+}
+
+.edit-form button:hover {
+    background-color: #218838;
+}
+
+.edit-form button:focus {
+    box-shadow: 0 0 0 4px rgba(40, 167, 69, 0.5);
+}
+
+/* Responsive Media Queries */
+@media (max-width: 768px) {
+    .events-main {
+        padding: 15px;
+    }
+
+    .event-item {
+        padding: 15px 0;
+    }
+
+    .event-image {
+        max-width: 100px;
+    }
+
+    button, a.button {
+        width: 100%; /* Buttons span full width on mobile */
+        margin-bottom: 10px;
+    }
+
+    .edit-form {
+        padding: 15px;
+    }
+}

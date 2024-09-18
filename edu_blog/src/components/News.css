@@ -1,0 +1,73 @@
+/* src/pages/News.css */
+
+.news-main {
+    padding: 20px;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+  
+  .news-header {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .news-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .news-item {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra el contenido horizontalmente */
+  }
+  
+  .news-title {
+    font-size: 1.8rem;
+    color: #222;
+    margin: 0 0 10px;
+    text-align: center; /* Centra el texto del título */
+  }
+  
+  .news-image {
+    width: 100%; /* Ajusta la imagen al ancho del contenedor */
+    max-width: 600px; /* Ancho máximo para la imagen */
+    height: 300px; /* Altura fija para la imagen */
+    object-fit: cover; /* Mantiene la proporción de la imagen */
+    border-radius: 8px; /* Bordes redondeados */
+    margin-bottom: 10px;
+  }
+  
+  .news-content {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.6;
+    margin: 0 0 10px;
+    text-align: center; /* Centra el texto del contenido */
+  }
+  
+  .news-date {
+    display: block;
+    margin-top: 10px;
+    font-size: 0.8rem;
+    color: #888;
+    text-align: center; /* Centra el texto de la fecha */
+  }
+  
+  .news-loading, .news-error, .news-empty {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #666;
+  }
+  

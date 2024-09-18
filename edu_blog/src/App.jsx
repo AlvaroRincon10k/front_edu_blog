@@ -1,15 +1,17 @@
 // App.jsx
 
+//import './App.css';
+
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import Home from './pages/Home';
-import News from './pages/News';
-import Events from './pages/Events';
-import Login from './pages/Login';
-import Register from './pages/Register';
-import EventDetail from './pages/EventDetail';
+import Home from './components/Home';
+import News from './components/News';
+import Events from './components/Events';
+import Login from './components/Login';
+import Register from './components/Register';
+import EventDetail from './components/EventDetail';
 
 function App() {
   return (

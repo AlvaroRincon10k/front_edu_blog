@@ -1,0 +1,71 @@
+/* src/components/Footer.css */
+
+footer {
+  background-color: #333; /* Color de fondo oscuro */
+  color: #fff; /* Color del texto blanco */
+  padding: 2rem 1rem; /* Espaciado interno del footer */
+  text-align: center; /* Centra el texto */
+}
+
+.footer-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem; /* Espacio entre secciones */
+}
+
+.footer-section {
+  flex: 1;
+  min-width: 200px; /* Anchura mínima para cada sección */
+}
+
+.footer-section h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #fff;
+}
+
+.footer-section p {
+  margin: 0.5rem 0;
+  color: #ccc; /* Color del texto más claro para contraste */
+}
+
+.footer-section a {
+  color: #fff; /* Color del texto de los enlaces */
+  text-decoration: none; /* Sin subrayado en enlaces */
+  display: block; /* Hace que el enlace ocupe toda la línea */
+  margin: 0.5rem 0;
+}
+
+.footer-section a:hover {
+  color: #4CAF50; /* Color de resaltado en hover */
+}
+
+.social-media a {
+  display: flex;
+  align-items: center; /* Alinea íconos y texto verticalmente */
+  justify-content: center; /* Centra íconos y texto horizontalmente */
+  margin: 0.5rem 0;
+  color: #fff; /* Color del texto de los enlaces sociales */
+}
+
+.social-media a:hover {
+  color: #4CAF50; /* Color de resaltado en hover para redes sociales */
+}
+
+.social-media .fa-icon {
+  margin-right: 0.5rem; /* Espacio entre el ícono y el texto */
+}
+
+  
+  
+.footer-section ul li a:hover {
+    text-decoration: underline;
+  }
+  
+  
+  
+.social-media a:hover {
+    text-decoration: underline;
+  }
+  
