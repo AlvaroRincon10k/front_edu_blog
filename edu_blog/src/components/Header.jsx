@@ -5,17 +5,21 @@ import { FaSignInAlt, FaUserPlus, FaSignOutAlt, FaUser } from 'react-icons/fa'; 
 
 function Header() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [userName, setUserName] = useState('');
 
   useEffect(() => {
     const user = localStorage.getItem('user');
     if (user) {
+      const parsedUser = JSON.parse(user); // Convertir el string a un objeto
       setIsAuthenticated(true);
+      setUserName(parsedUser.username); // Acceder al 'username'
     }
   }, []);
 
   const handleLogout = () => {
     localStorage.removeItem('user');
     setIsAuthenticated(false);
+    setUserName(''); // Limpiar el nombre al cerrar sesión
   };
 
   return (
@@ -29,7 +33,7 @@ function Header() {
         <ul className="auth-links">
           {isAuthenticated ? (
             <>
-              <li><FaUser className="auth-icon" /><span>Bienvenido, Usuario</span></li>
+              <li><FaUser className="auth-icon" /><span className="msj-bienbevida">Bienvenido, {userName}</span></li>
               <li><FaSignOutAlt className="auth-icon" onClick={handleLogout} /></li>
             </>
           ) : (
