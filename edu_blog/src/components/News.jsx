@@ -17,6 +17,34 @@ const mockNews = [
     content: "Contenido de la noticia 2.",
     published_at: "2024-09-02"
   },
+  {
+    id: 3,
+    title: "Noticia 3",
+    image: "https://via.placeholder.com/150",
+    content: "Contenido de la noticia 3.",
+    published_at: "2024-09-02"
+  },
+  {
+    id: 4,
+    title: "Noticia 4",
+    image: "https://via.placeholder.com/150",
+    content: "Contenido de la noticia 4.",
+    published_at: "2024-09-02"
+  },
+  {
+    id: 5,
+    title: "Noticia 5",
+    image: "https://via.placeholder.com/150",
+    content: "Contenido de la noticia 5.",
+    published_at: "2024-09-02"
+  },
+  {
+    id: 6,
+    title: "Noticia 6",
+    image: "https://via.placeholder.com/150",
+    content: "Contenido de la noticia 6.",
+    published_at: "2024-09-02"
+  },
   // Agrega más noticias simuladas si es necesario
 ];
 
@@ -26,16 +54,16 @@ function News() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    // Simular la carga de noticias desde localStorage
-    setTimeout(() => {
+    // Cargar noticias desde localStorage
+    const loadNews = () => {
       try {
-        const storedNews = JSON.parse(localStorage.getItem('news'));
-        if (storedNews) {
-          setNews(storedNews);
-        } else {
-          // Si no hay noticias en localStorage, usa datos simulados
+        const storedNews = JSON.parse(localStorage.getItem('news')) || [];
+        if (storedNews.length === 0) {
+          // Si localStorage está vacío, guardar noticias simuladas
           localStorage.setItem('news', JSON.stringify(mockNews));
           setNews(mockNews);
+        } else {
+          setNews(storedNews);
         }
         setLoading(false);
       } catch (err) {
@@ -43,8 +71,23 @@ function News() {
         setError('Error loading news');
         setLoading(false);
       }
-    }, 1000); // Simula un pequeño retraso
+    };
+
+    loadNews();
   }, []);
+
+  useEffect(() => {
+    // Guardar noticias en localStorage cuando se actualice el estado
+    localStorage.setItem('news', JSON.stringify(news));
+  }, [news]);
+
+  const addNews = (newNewsItem) => {
+    setNews(prevNews => [...prevNews, newNewsItem]);
+  };
+
+  const removeNews = (id) => {
+    setNews(prevNews => prevNews.filter(newsItem => newsItem.id !== id));
+  };
 
   if (loading) {
     return <p className="news-loading">Loading...</p>;
