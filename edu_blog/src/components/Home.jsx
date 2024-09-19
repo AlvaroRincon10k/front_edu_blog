@@ -44,7 +44,7 @@ function Home() {
 
       {/* Sección del carrusel */}
       <section className="home-carousel">
-        <h2 className="gallery-title">Galería</h2>
+        <h2 className="gallery-title"> Nuestra Galería</h2>
         <Slider {...carouselSettings}>
           {images.map((image, index) => (
             <div key={index} className="carousel-slide">
