@@ -1,71 +1,82 @@
-/* src/components/Footer.css */
-
 footer {
-  background-color: #333; /* Color de fondo oscuro */
-  color: #fff; /* Color del texto blanco */
-  padding: 2rem 1rem; /* Espaciado interno del footer */
-  text-align: center; /* Centra el texto */
+  background-color: #333;
+  color: #fff;
+  padding: 2rem 1rem;
+  text-align: center;
 }
 
 .footer-content {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  gap: 2rem; /* Espacio entre secciones */
+  justify-content: space-around; /* Ajusta el espacio entre secciones */
+  align-items: flex-start; /* Alinea el contenido al inicio */
+  gap: 2rem;
 }
 
 .footer-section {
   flex: 1;
-  min-width: 200px; /* Anchura mínima para cada sección */
+  min-width: 200px;
 }
 
 .footer-section h3 {
   font-size: 1.5rem;
   margin-bottom: 1rem;
   color: #fff;
+  text-transform: uppercase; /* Mayúsculas para títulos */
 }
 
-.footer-section p {
+.footer-section p, .footer-section ul li {
   margin: 0.5rem 0;
-  color: #ccc; /* Color del texto más claro para contraste */
+  color: #ccc;
 }
 
-.footer-section a {
-  color: #fff; /* Color del texto de los enlaces */
-  text-decoration: none; /* Sin subrayado en enlaces */
-  display: block; /* Hace que el enlace ocupe toda la línea */
-  margin: 0.5rem 0;
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
 }
 
-.footer-section a:hover {
-  color: #4CAF50; /* Color de resaltado en hover */
+
+.footer-section ul li {
+  margin-bottom: 1rem; /* Incrementa el margen inferior para dar más espacio */
+  
 }
+
+.footer-section ul li a {
+  color: #fff;
+  text-decoration: none;
+  display: inline-block;
+  /*margin-right: 1rem;*/
+  
+}
+
+.footer-section ul li a:hover {
+  text-decoration: underline;
+}
+
 
 .social-media a {
   display: flex;
-  align-items: center; /* Alinea íconos y texto verticalmente */
-  justify-content: center; /* Centra íconos y texto horizontalmente */
+  align-items: center;
+  justify-content: center;
   margin: 0.5rem 0;
-  color: #fff; /* Color del texto de los enlaces sociales */
+  color: #fff;
+  text-decoration: none;
 }
 
 .social-media a:hover {
-  color: #4CAF50; /* Color de resaltado en hover para redes sociales */
+  color: #4CAF50;
 }
 
 .social-media .fa-icon {
-  margin-right: 0.5rem; /* Espacio entre el ícono y el texto */
+  margin-right: 0.5rem;
 }
 
-  
-  
-.footer-section ul li a:hover {
-    text-decoration: underline;
+@media (max-width: 768px) {
+  .footer-content {
+    flex-direction: column;
+    text-align: center; /* Asegura que todo esté centrado en pantallas pequeñas */
   }
-  
-  
-  
-.social-media a:hover {
-    text-decoration: underline;
-  }
-  
+}
+

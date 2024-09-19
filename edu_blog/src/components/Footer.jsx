@@ -32,16 +32,16 @@ function Footer() {
           <div className="footer-section social-media">
             <h3>Redes Sociales</h3>
             <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
-              <FontAwesomeIcon icon={faFacebook} /> Facebook
+              <FontAwesomeIcon className="fa-icon" icon={faFacebook} /> Facebook
             </a>
             <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
-              <FontAwesomeIcon icon={faInstagram} /> Instagram
+              <FontAwesomeIcon className="fa-icon" icon={faInstagram} /> Instagram
             </a>
             <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
-              <FontAwesomeIcon icon={faLinkedin} /> LinkedIn
+              <FontAwesomeIcon className="fa-icon" icon={faLinkedin} /> LinkedIn
             </a>
             <a href="https://youtube.com" target="_blank" rel="noopener noreferrer">
-              <FontAwesomeIcon icon={faYoutube} /> YouTube
+              <FontAwesomeIcon className="fa-icon" icon={faYoutube} /> YouTube
             </a>
           </div>
         </div>
