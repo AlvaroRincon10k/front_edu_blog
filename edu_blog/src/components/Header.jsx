@@ -1,25 +1,22 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import './Header.css'; 
+import './Header.css';
 import { FaSignInAlt, FaUserPlus, FaSignOutAlt, FaUser } from 'react-icons/fa'; // Iconos
 
-function Header() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [userName, setUserName] = useState('');
+function Header({ isAuthenticated, setAuthenticated }) {
+  const [userName, setUserName] = React.useState('');
 
   useEffect(() => {
-    const user = localStorage.getItem('user');
-    if (user) {
-      const parsedUser = JSON.parse(user); // Convertir el string a un objeto
-      setIsAuthenticated(true);
-      setUserName(parsedUser.username); // Acceder al 'username'
+    const user = JSON.parse(localStorage.getItem('user'));
+    if (user && isAuthenticated) {
+      setUserName(user.email); // Asigna el correo como nombre de usuario
     }
-  }, []);
+  }, [isAuthenticated]); // Actualiza cuando cambia el estado de autenticación
 
   const handleLogout = () => {
-    localStorage.removeItem('user');
-    setIsAuthenticated(false);
-    setUserName(''); // Limpiar el nombre al cerrar sesión
+    localStorage.removeItem('isAuthenticated'); // Elimina el estado de autenticación
+    setAuthenticated(false); // Cambia el estado a no autenticado
+    setUserName(''); // Limpia el nombre del usuario
   };
 
   return (
@@ -33,13 +30,26 @@ function Header() {
         <ul className="auth-links">
           {isAuthenticated ? (
             <>
-              <li><FaUser className="auth-icon" /><span className="msj-bienbevida">Bienvenido, {userName}</span></li>
-              <li><FaSignOutAlt className="auth-icon" onClick={handleLogout} /></li>
+              <li>
+                <FaUser className="auth-icon" />
+                <span className="msj-bienvenida">Bienvenido, {userName}</span>
+              </li>
+              <li>
+                <FaSignOutAlt className="auth-icon" onClick={handleLogout} />
+              </li>
             </>
           ) : (
             <>
-              <li><Link to="/login"><FaSignInAlt className="auth-icon" /></Link></li>
-              <li><Link to="/register"><FaUserPlus className="auth-icon" /></Link></li>
+              <li>
+                <Link to="/login">
+                  <FaSignInAlt className="auth-icon" />
+                </Link>
+              </li>
+              <li>
+                <Link to="/register">
+                  <FaUserPlus className="auth-icon" />
+                </Link>
+              </li>
             </>
           )}
         </ul>

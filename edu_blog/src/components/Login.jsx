@@ -1,31 +1,33 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; 
-import './Login.css'; 
+import { useNavigate } from 'react-router-dom';
+import './Login.css';
 
-function Login() {
-  const [username, setUsername] = useState('');
+function Login({ setAuthenticated }) { // Recibe una función para actualizar el estado de autenticación
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Validación simple
-    if (username.length < 3 || password.length < 6) {
-      setError("Por favor ingresa un nombre de usuario de al menos 3 caracteres y una contraseña de al menos 6 caracteres.");
+    const storedUser = JSON.parse(localStorage.getItem('user'));
+
+    if (!storedUser || storedUser.email !== email || storedUser.password !== password) {
+      setError("Email o contraseña incorrectos.");
       return;
     }
 
-    // Simulación de inicio de sesión usando localStorage
-    const storedUser = JSON.parse(localStorage.getItem('user')) || {};
-
-    if (storedUser.username === username && storedUser.password === password) {
-      localStorage.setItem('token', 'dummy-token'); // Simulate token storage
-      navigate('/home'); 
-    } else {
-      setError('Nombre de usuario o contraseña incorrectos.');
-    }
+    setError(null);
+    
+    // Almacena un indicador de que el usuario está autenticado
+    localStorage.setItem('isAuthenticated', true);
+    
+    // Actualiza el estado de autenticación para el header
+    setAuthenticated(true); 
+    
+    // Redirige a la página de inicio
+    navigate('/home');
   };
 
   return (
@@ -34,11 +36,11 @@ function Login() {
         <h1>Iniciar sesión</h1>
         <form className="login-form" onSubmit={handleSubmit}>
           <div className="form-group">
-            <label>Username:</label>
+            <label>Email:</label>
             <input
-              type="text"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               className="form-input"
               required
             />
@@ -53,9 +55,15 @@ function Login() {
               required
             />
           </div>
-          {error && <p className="error-message">{error}</p>} {/* Mostrar error */}
-          <button type="submit" className="btn-submit">Iniciar sesión</button>
+          {error && <p className="error-message">{error}</p>}
+          <button type="submit" className="btn-submit">
+            Iniciar sesión
+          </button>
         </form>
+
+        <div className="login-help">
+          <p>¿No tienes una cuenta? <a href="/register">Registrarse</a></p>
+        </div>
       </div>
     </main>
   );

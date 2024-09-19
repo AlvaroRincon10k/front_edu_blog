@@ -2,7 +2,7 @@
 
 /* Fondo del header con gris oscuro */
 header {
-  background-color: #2c2b2b; /* Gris oscuro */
+  background-color: #333333; /* Gris oscuro */
   padding: 1rem 2rem;
   width: 100vw;
   box-sizing: border-box; 

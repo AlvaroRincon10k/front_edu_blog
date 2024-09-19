@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import './Register.css'; // Asegúrate de que el archivo CSS esté en la misma carpeta
+import { useNavigate } from 'react-router-dom'; // Para redirigir después de registrar
+import './Register.css';
 
 function Register() {
   const [username, setUsername] = useState('');
@@ -8,6 +9,7 @@ function Register() {
   const [password2, setPassword2] = useState('');
   const [error, setError] = useState(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const navigate = useNavigate(); // Para redireccionar después del registro
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -39,8 +41,9 @@ function Register() {
       localStorage.setItem('user', JSON.stringify(userData));
       setIsSubmitting(false);
       alert('Registro exitoso');
-      // Redirigir al usuario o hacer algo más aquí
-    }, 1000); // Simula un pequeño retraso como si fuera una llamada a la API
+      // Redirigir al usuario a la página de inicio de sesión
+      navigate('/login'); 
+    }, 1000);
   };
 
   return (

@@ -1,222 +1,268 @@
-/* General Styles */
-body {
-    font-family: 'Open Sans', sans-serif;
-    line-height: 1.6;
+/* General styling */
+.events-main {
+    padding: 20px;
+    background-color: #f9f9f9;
+    font-family: Arial, sans-serif;
+  }
+  
+  .events-title {
+    text-align: center;
+    font-size: 2.5rem;
     color: #333;
-    background-color: #f4f4f4;
-    margin: 0;
+    margin-bottom: 30px;
+  }
+  
+  .no-events {
+    text-align: center;
+    color: #777;
+    font-size: 1.2rem;
+  }
+  
+  /* Events list */
+  .events-list {
+    list-style-type: none;
     padding: 0;
-}
-
-main {
-    width: 100vw;
-    margin: 20px auto;
-    padding: 0;
-    background: #fff;
-    border-radius: 8px; /* Rounded corners */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Softer shadow */
-}
-
-/* Heading Styles */
-h1, .events-title {
-    font-size: 2.5em;
-    border-bottom: 2px solid #ddd;
-    padding-bottom: 10px;
+  }
+  
+  .event-item {
+    background-color: #fff;
     margin-bottom: 20px;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+  }
+  
+  .event-item:hover {
+    transform: scale(1.02);
+  }
+  
+  .event-link {
+    text-decoration: none;
     color: #333;
-    font-weight: 600; /* Bolder heading */
-}
-
-h2, .event-title {
-    font-size: 1.8em;
-    margin-top: 2rem;
-    color: #444;
-    font-weight: 500;
-}
-
-h3 {
-    font-size: 1.6em;
-    margin-top: 20px;
+  }
+  
+  .event-title {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    color: #2a9d8f;
+  }
+  
+  .event-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 15px;
+  }
+  
+  .event-description {
+    font-size: 1rem;
     color: #555;
-}
+  }
+  
+  .event-date, .event-location {
+    font-size: 0.9rem;
+    color: #999;
+  }
+  
+  /* Event actions */
+  .event-actions {
+    margin-top: 15px;
+  }
+  
+  .delete-btn, .edit-btn {
+    background-color: #e63946;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    margin-right: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .delete-btn:hover {
+    background-color: #d62828;
+  }
+  
+  .edit-btn {
+    background-color: #2a9d8f;
+  }
+  
+  .edit-btn:hover {
+    background-color: #21867a;
+  }
+  
+  /* Form styling */
+  .edit-form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .form-input, .form-textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .form-textarea {
+    height: 100px;
+    resize: vertical;
+  }
+  
+  .save-btn, .cancel-btn {
+    background-color: #2a9d8f;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .save-btn:hover, .cancel-btn:hover {
+    background-color: #21867a;
+  }
+  
+  .cancel-btn {
+    background-color: #e76f51;
+    margin-left: 10px;
+  }
+  
+/*Formulario para agregar eventos*/  
 
-/* Event List Styles */
-.events-list {
+.add-event-button {
+    margin: 10px 0;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .add-event-button:hover {
+    background-color: #45a049;
+  }
+  
+  .add-event-form {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+  }
+  
+  .add-event-form label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  .add-event-form input,
+  .add-event-form textarea {
+    width: 100%;
+    padding: 8px;
+    margin: 5px 0 20px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  .add-event-form button {
+    padding: 10px 15px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .add-event-form button:hover {
+    background-color: #0056b3;
+  }
+  
+
+  .events-list {
     list-style: none;
     padding: 0;
     margin: 0;
-}
-
-.event-item {
-    border-bottom: 1px solid #ddd;
-    padding: 20px 0;
-    margin-bottom: 20px;
-    transition: background-color 0.3s ease;
-}
-
-.event-item:hover {
-    background-color: #f9f9f9; /* Subtle hover effect */
-}
-
-.event-item:last-child {
-    border-bottom: none;
-}
-
-/* Image Styles */
-.event-image {
-    max-width: 120px; /* Slightly larger images */
-    height: auto;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-bottom: 10px;
-}
-
-/* Description Styles */
-.event-description {
-    margin: 0 0 20px;
-    line-height: 1.8;
-    color: #555;
-    font-size: 1.1em;
-}
-
-/* Date and Location Styles */
-.event-date, .event-location {
-    font-size: 1.1em;
-    margin-top: 5px;
-}
-
-.event-date {
-    color: #007bff;
-    font-weight: 600;
-}
-
-.event-location {
-    color: #888;
-    font-style: italic;
-}
-
-/* Loading and Error Styles */
-.loading {
-    font-size: 1.3em;
-    color: #007bff;
-    font-weight: 500;
-}
-
-.error {
-    font-size: 1.3em;
-    color: #dc3545;
-    font-weight: 500;
-}
-
-/* Button Styles */
-button, a.button {
-    display: inline-block;
-    padding: 10px 20px;
-    color: #fff;
-    background-color: #007bff;
-    text-decoration: none;
-    border-radius: 5px;
-    border: none;
-    transition: background-color 0.3s ease;
-    cursor: pointer;
-    font-weight: 500;
-}
-
-button:hover, a.button:hover {
-    background-color: #0056b3;
-}
-
-button:focus, a.button:focus {
-    outline: none;
-    box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.5);
-}
-
-/* Event Action Buttons */
-.event-actions button {
-    margin-right: 10px;
-    padding: 8px 16px;
-}
-
-.event-actions button:last-child {
-    margin-right: 0;
-}
-
-/* Form Styles */
-.edit-form {
-    margin-top: 30px;
-    padding: 20px;
-    background: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-}
-
-.edit-form h2 {
-    font-size: 1.8em;
-    margin-bottom: 20px;
-}
-
-.edit-form form {
     display: flex;
     flex-direction: column;
+  }
+  
+    
+  .event-item {
+    position: relative; /* Para posicionar elementos internos */
+    background-color: #fff;
+    margin-bottom: 20px;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
 }
 
-.edit-form label {
-    font-weight: 500;
+
+
+
+  .event-title {
+    text-align: center; /* Centra el título */
+    font-size: 1.8rem;
     margin-bottom: 10px;
-    color: #333;
+    color: #2a9d8f;
 }
+  
 
-.edit-form input, 
-.edit-form textarea {
-    padding: 10px;
-    font-size: 1em;
-    border: 1px solid #ddd;
-    border-radius: 4px;
+  .event-image {
+    display: block;
+    margin: 0 auto; /* Centra la imagen horizontalmente */
+    width: 30%; /* Ajusta el tamaño de la imagen al 50% del contenedor */
+    height: auto; /* Mantiene la proporción original de la imagen */
+    border-radius: 8px;
     margin-bottom: 15px;
-    transition: border-color 0.3s ease;
 }
 
-.edit-form input:focus, 
-.edit-form textarea:focus {
-    border-color: #007bff;
-    outline: none;
+  
+.event-description {
+    text-align: center; /* Centra el texto de descripción */
+    font-size: 1rem;
+    color: #555;
+    margin-top: 10px;
 }
 
-.edit-form button {
-    align-self: flex-start;
-    padding: 10px 20px;
+.event-date, .event-location {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    text-align: right; /* Alinea el texto dentro del contenedor */
+    font-size: 0.9rem;
+    color: #999;
+}
+  
+  .event-actions {
+    margin-top: 10px;
+  }
+  
+  .add-event-button, .save-btn, .cancel-btn {
+    display: block;
+    margin: 10px 0;
+    padding: 10px;
     background-color: #28a745;
-    font-weight: 600;
-}
-
-.edit-form button:hover {
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .add-event-button:hover, .save-btn:hover, .cancel-btn:hover {
     background-color: #218838;
-}
-
-.edit-form button:focus {
-    box-shadow: 0 0 0 4px rgba(40, 167, 69, 0.5);
-}
-
-/* Responsive Media Queries */
-@media (max-width: 768px) {
-    .events-main {
-        padding: 15px;
-    }
-
-    .event-item {
-        padding: 15px 0;
-    }
-
-    .event-image {
-        max-width: 100px;
-    }
-
-    button, a.button {
-        width: 100%; /* Buttons span full width on mobile */
-        margin-bottom: 10px;
-    }
-
-    .edit-form {
-        padding: 15px;
-    }
-}
+  }
+  
