@@ -1,71 +1,124 @@
-/* src/pages/News.css */
+/* Estilos generales para el body y el contenedor principal */
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: Arial, sans-serif;
+  overflow-x: hidden; /* Previene el scroll horizontal en el body */
+}
 
+#root {
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+  width: 100%; /* Asegura que el root no sea más ancho que el viewport */
+}
+
+/* Estilos para la página de noticias */
 .news-main {
+  flex: 1 0 auto;
   padding: 20px;
-  max-width: 1200px; /* Limita el ancho máximo del contenedor principal */
+  max-width: 1200px;
   margin: 0 auto;
-  background-color: #f4f4f4; /* Fondo claro para el área de noticias */
+  background-color: #f4f4f4;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.news-header {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 20px;
+  word-wrap: break-word; /* Permite que las palabras largas se rompan */
+}
+
+.news-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.news-item {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  padding: 20px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 100%; /* Asegura que los items no sean más anchos que su contenedor */
+}
+
+.news-title {
+  font-size: 1.8rem;
+  color: #222;
+  margin: 0 0 10px;
+  text-align: center;
+  word-wrap: break-word; /* Permite que las palabras largas se rompan */
+}
+
+.news-image {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+.news-content {
+  font-size: 1rem;
+  color: #444;
+  line-height: 1.6;
+  margin: 0 0 15px;
+  text-align: center;
+  word-wrap: break-word; /* Permite que las palabras largas se rompan */
+}
+
+.news-date {
+  font-size: 0.9rem;
+  color: #888;
+  text-align: center;
+}
+
+.news-loading, .news-error, .news-empty {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #666;
+  margin-top: 20px;
+}
+
+/* Estilos para el footer */
+footer {
+  flex-shrink: 0;
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  width: 100%;
+  box-sizing: border-box; /* Incluye padding en el ancho total */
+}
+
+/* Media queries para responsividad */
+@media (max-width: 768px) {
+  .news-main {
+    padding: 10px;
   }
-  
+
   .news-header {
-    text-align: center;
-    font-size: 2.5rem;
-    color: #333;
-    margin-bottom: 20px;
+    font-size: 2rem;
   }
-  
-  .news-list {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  .news-item {
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    margin-bottom: 20px;
-    padding: 20px;
-    background-color: #ffffff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Centra el contenido horizontalmente */
-  }
-  
+
   .news-title {
-    font-size: 1.8rem;
-    color: #222;
-    margin: 0 0 10px;
-    text-align: center; /* Centra el texto del título */
+    font-size: 1.5rem;
   }
-  
-  .news-image {
-    width: 100%; /* Ajusta la imagen al ancho del contenedor */
-    max-width: 600px; /* Ancho máximo para la imagen */
-    height: auto; /* Altura automática para mantener la proporción */
-    object-fit: cover; /* Mantiene la proporción de la imagen */
-    border-radius: 8px; /* Bordes redondeados */
-    margin-bottom: 15px;
-  }
-  
+
   .news-content {
-    font-size: 1rem;
-    color: #444;
-    line-height: 1.6;
-    margin: 0 0 15px;
-    text-align: center; /* Centra el texto del contenido */
-  }
-  
-  .news-date {
     font-size: 0.9rem;
-    color: #888;
-    text-align: center; /* Centra el texto de la fecha */
   }
-  
-  .news-loading, .news-error, .news-empty {
-    text-align: center;
-    font-size: 1.2rem;
-    color: #666;
-    margin-top: 20px; /* Espacio adicional arriba */
-  }
-  
+}
