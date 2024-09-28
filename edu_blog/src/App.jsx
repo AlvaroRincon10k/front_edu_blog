@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
-import Footer from './components/Footer'; // Footer también debe estar disponible
+import Footer from './components/Footer'; 
 import Home from './components/Home';
 import News from './components/News';
 import Events from './components/Events';
@@ -31,7 +31,7 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/events/:eventoId" element={<EventDetail />} />
       </Routes>
-      {/* Asegúrate de que el Footer se renderice en todas las páginas */}
+      
       <Footer />
     </Router>
   );
