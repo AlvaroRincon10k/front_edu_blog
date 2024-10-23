@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './Header.css';
-import { FaSignInAlt, FaUserPlus, FaSignOutAlt, FaUser } from 'react-icons/fa'; // Iconos
+import { FaSignInAlt, FaUserPlus, FaSignOutAlt, FaUser } from 'react-icons/fa'; 
 
 function Header({ isAuthenticated, setAuthenticated }) {
   const [userName, setUserName] = React.useState('');

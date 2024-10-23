@@ -11,41 +11,43 @@ function Events() {
   const [showAddEventForm, setShowAddEventForm] = useState(false);
 
   useEffect(() => {
-    const storedEvents = JSON.parse(localStorage.getItem('events'));
-    if (storedEvents && storedEvents.length > 0) {
-      setEvents(storedEvents);
-    } else {
-      const staticEvents = [
-        { id: 1, title: 'Conferencia de Educación 2024', description: 'Un evento para discutir las tendencias actuales en la educación.', date: '2024-03-15', location: 'Auditorio Principal, Colegio X', image: 'https://via.placeholder.com/150' },
-        { id: 2, title: 'Feria de Ciencias 2024', description: 'Los estudiantes presentan sus proyectos de ciencias.', date: '2024-04-22', location: 'Gimnasio del Colegio X', image: 'https://via.placeholder.com/150' }
-      ];
-      localStorage.setItem('events', JSON.stringify(staticEvents));
-      setEvents(staticEvents);
-    }
-  
-    // Obtener el usuario almacenado en localStorage
+    fetch('http://localhost:5000/api/events')
+      .then(response => response.json())
+      .then(data => {
+        setEvents(data);
+        setLoading(false);
+      })
+      .catch(error => {
+        console.error('Error fetching events:', error);
+        setLoading(false);
+      });
+
     const user = JSON.parse(localStorage.getItem('user'));
-    
-    // Verificar si existe el usuario
-    setIsAuthenticated(!!user); // Cambia a `true` si existe un usuario válido
-    
-    // Debug para verificar si se está autenticando correctamente
-    console.log("Usuario autenticado:", user, "Estado de autenticación:", !!user);
-  
-    setLoading(false); // Finaliza la carga una vez se ha verificado la autenticación
+    setIsAuthenticated(!!user);  
   }, []);
 
+ 
   const deleteEvent = (eventId) => {
-    const updatedEvents = events.filter(event => event.id !== eventId);
-    setEvents(updatedEvents);
-    localStorage.setItem('events', JSON.stringify(updatedEvents));
+    fetch(`http://localhost:5000/api/events/${eventId}`, {
+      method: 'DELETE'
+    })
+      .then(response => {
+        if (response.ok) {
+          setEvents(events.filter(event => event.id !== eventId));
+        } else {
+          console.error('Failed to delete event');
+        }
+      })
+      .catch(error => console.error('Error deleting event:', error));
   };
 
+  
   const startEditEvent = (event) => {
     setEditingEvent(event.id);
     setFormData({ ...event });
   };
 
+  
   const handleFormChange = (e) => {
     setFormData({
       ...formData,
@@ -53,34 +55,43 @@ function Events() {
     });
   };
 
+  
   const saveEditEvent = () => {
-    const updatedEvents = events.map(event =>
-      event.id === editingEvent ? { ...formData, id: editingEvent } : event
-    );
-    setEvents(updatedEvents);
-    localStorage.setItem('events', JSON.stringify(updatedEvents));
-    setEditingEvent(null);
+    fetch(`http://localhost:5000/api/events/${editingEvent}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(formData)
+    })
+      .then(response => response.json())
+      .then(data => {
+        const updatedEvents = events.map(event =>
+          event.id === editingEvent ? data : event
+        );
+        setEvents(updatedEvents);
+        setEditingEvent(null);
+      })
+      .catch(error => console.error('Error updating event:', error));
   };
 
+  
   const addNewEvent = (e) => {
     e.preventDefault();
-  
-    // Encuentra el ID más alto actual y asigna uno nuevo incrementado
-    const maxId = events.length > 0 ? Math.max(...events.map(event => event.id)) : 0;
-  
-    const newEvent = {
-      id: maxId + 1, // Generar un nuevo ID único
-      title: formData.title,
-      description: formData.description,
-      date: formData.date,
-      location: formData.location,
-      image: formData.image
-    };
-  
-    const updatedEvents = [...events, newEvent];
-    setEvents(updatedEvents);
-    localStorage.setItem('events', JSON.stringify(updatedEvents)); // Guardar en localStorage
-    setShowAddEventForm(false); // Cerrar el formulario después de agregar el evento
+
+    fetch('http://localhost:5000/api/events', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(formData)
+    })
+      .then(response => response.json())
+      .then(data => {
+        setEvents([...events, data.event]);
+        setShowAddEventForm(false);
+      })
+      .catch(error => console.error('Error adding event:', error));
   };
 
   if (loading) {
@@ -106,7 +117,6 @@ function Events() {
                 <p className="event-location">{event.location}</p>
               </div>
 
-              {/* Botones de Eliminar y Editar: solo si el usuario está autenticado */}
               {isAuthenticated && (
                 <div className="event-actions">
                   <button onClick={() => deleteEvent(event.id)} className="delete-btn">Eliminar</button>
@@ -118,7 +128,6 @@ function Events() {
         </ul>
       )}
 
-      {/* Formulario de edición: solo si se está editando un evento */}
       {editingEvent && (
         <div className="edit-form">
           <h2>Edit Event</h2>
@@ -149,12 +158,10 @@ function Events() {
         </div>
       )}
 
-      {/* Botón para agregar evento: solo si el usuario está autenticado */}
       {isAuthenticated && (
         <button onClick={() => setShowAddEventForm(true)} className="add-event-button">Agregar Evento</button>
       )}
 
-      {/* Formulario para agregar evento: solo visible si showAddEventForm es true */}
       {showAddEventForm && isAuthenticated && (
         <div className="add-event-form">
           <h2>Agregar Evento</h2>

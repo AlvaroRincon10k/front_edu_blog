@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // Para redirigir después de registrar
+import { useNavigate } from 'react-router-dom'; 
 import './Register.css';
 
 function Register() {
@@ -9,9 +9,9 @@ function Register() {
   const [password2, setPassword2] = useState('');
   const [error, setError] = useState(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const navigate = useNavigate(); // Para redireccionar después del registro
+  const navigate = useNavigate(); 
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     // Validación simple
@@ -36,14 +36,28 @@ function Register() {
     // Datos del registro
     const userData = { username, email, password };
 
-    // Simular el registro y almacenar en localStorage
-    setTimeout(() => {
-      localStorage.setItem('user', JSON.stringify(userData));
-      setIsSubmitting(false);
+    try {
+      const response = await fetch('http://localhost:5000/api/users', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(userData),
+      });
+
+      if (!response.ok) {
+        throw new Error('Error al registrar el usuario.');
+      }
+
+      const result = await response.json();
       alert('Registro exitoso');
       // Redirigir al usuario a la página de inicio de sesión
       navigate('/login'); 
-    }, 1000);
+    } catch (error) {
+      setError(error.message);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (

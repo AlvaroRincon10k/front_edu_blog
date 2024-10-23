@@ -5,15 +5,16 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  font-family: Arial, sans-serif;
+  font-family: 'Arial', sans-serif;
   overflow-x: hidden; /* Previene el scroll horizontal en el body */
+  background-color: #e9ecef; /* Color de fondo suave */
 }
 
 #root {
   flex: 1 0 auto;
   display: flex;
   flex-direction: column;
-  width: 100%; /* Asegura que el root no sea más ancho que el viewport */
+  width: 100%; 
 }
 
 /* Estilos para la página de noticias */
@@ -21,54 +22,61 @@ body {
   flex: 1 0 auto;
   padding: 20px;
   max-width: 1200px;
-  margin: 0 auto;
-  background-color: #f4f4f4;
-  width: 100%;
-  box-sizing: border-box;
+  margin: 20px auto;
+  background-color: #ffffff; 
+  border-radius: 8px; 
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); 
 }
 
 .news-header {
   text-align: center;
   font-size: 2.5rem;
-  color: #333;
+  color: #007bff; 
   margin-bottom: 20px;
-  word-wrap: break-word; /* Permite que las palabras largas se rompan */
+  text-transform: uppercase; 
+  letter-spacing: 1px; 
 }
 
 .news-list {
   list-style-type: none;
   padding: 0;
   margin: 0;
+  display: flex;
+  flex-wrap: wrap; 
+  justify-content: center;
 }
 
 .news-item {
   border: 1px solid #ddd;
   border-radius: 8px;
-  margin-bottom: 20px;
+  margin: 10px; 
   padding: 20px;
-  background-color: #ffffff;
+  background-color: #f8f9fa; 
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  max-width: 100%; /* Asegura que los items no sean más anchos que su contenedor */
+  transition: transform 0.2s; 
+  max-width: calc(33.33% - 20px); 
+  box-sizing: border-box; 
+}
+
+.news-item:hover {
+  transform: translateY(-5px); 
 }
 
 .news-title {
   font-size: 1.8rem;
-  color: #222;
+  color: #333;
   margin: 0 0 10px;
   text-align: center;
-  word-wrap: break-word; /* Permite que las palabras largas se rompan */
 }
 
 .news-image {
   width: 100%;
-  max-width: 600px;
+  max-width: 100%;
   height: auto;
   object-fit: cover;
   border-radius: 8px;
   margin-bottom: 15px;
+  border: 2px solid #007bff; 
 }
 
 .news-content {
@@ -76,8 +84,7 @@ body {
   color: #444;
   line-height: 1.6;
   margin: 0 0 15px;
-  text-align: center;
-  word-wrap: break-word; /* Permite que las palabras largas se rompan */
+  text-align: justify; 
 }
 
 .news-date {
@@ -101,7 +108,7 @@ footer {
   text-align: center;
   padding: 20px;
   width: 100%;
-  box-sizing: border-box; /* Incluye padding en el ancho total */
+  box-sizing: border-box; 
 }
 
 /* Media queries para responsividad */
@@ -120,5 +127,9 @@ footer {
 
   .news-content {
     font-size: 0.9rem;
+  }
+
+  .news-item {
+    max-width: 100%; 
   }
 }
